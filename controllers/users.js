@@ -19,4 +19,47 @@ const getSingle = async(req, res) =>{
     });
 };
 
-module.exports = {getAll, getSingle};
+const createUser = async (req, res) => {
+    const user = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      favoriteColor: req.body.favoriteColor,
+      birthday: req.body.birthday   
+    };
+    const response = await mongodb.getDatabase().db().collection('users').insertOne(user);
+    if(response.acknowledged > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(response.error || 'Some error occured while updating the user');
+    }
+};
+
+const updateUser = async (req, res) => {
+    const userId = new ObjectId(req.params.id);
+    const user = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      favoriteColor: req.body.favoriteColor,
+      birthday: req.body.birthday   
+    };
+    const response = await mongodb.getDatabase().db().collection('users').replaceOne({_id: userId}, user);
+    if(response.modifiedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(response.error || 'Some error occured while updating the user');
+    }
+};
+
+const deleteUser = async (req, res) => {
+    const userId = new ObjectId(req.params.id);
+    const response = await mongodb.getDatabase().db().collection('users').remove({_id: userId}, true);
+    if(response.deletedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(response.error || 'Some error occured while updating the user');
+    }
+};
+
+module.exports = {getAll, getSingle, createUser, updateUser, deleteUser};
