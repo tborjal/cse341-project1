@@ -1,13 +1,31 @@
 ##PRODUCTION
 GET https://cse341-project1-77sy.onrender.com/Users
 
-# Get Contact by Id localhost
+### Contact by Id
+GET http://localhost:3000/users/666e39d09ddd74b56a62b4bb
 
-GET https://localhost:3000/users/666e39d09ddd74b56a62b4bb
-
-#Create Contact
-
-POST https://localhost:3000/users/ HTTP/1.1
-
+### Create Contact
+POST http://localhost:3000/users HTTP/1.1
 content-type: application/json
+
+{
+    "email": "test@example.com",
+    "username": "test@test.com",
+    "name": "Hello",
+    "ipaddress": "94.121.163.63"
+} 
+
+### PUT Contact
+POST http://localhost:3000/users/666e39d09ddd74b56a62b4bb HTTP/1.1
+content-type: application/json
+
+{
+    "email": "test@example.com",
+    "username": "test@test.com",
+    "name": "Hello",
+    "ipaddress": "94.121.163.63"
+} 
+
+
+
 
