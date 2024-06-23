@@ -2,29 +2,35 @@
 GET https://cse341-project1-77sy.onrender.com/Users
 
 ### Contact by Id
-GET http://localhost:3000/users/666e39d09ddd74b56a62b4bb
+GET http://localhost:3000/users/6677933cc8e4987f0e3ad64f 
 
 ### Create Contact
 POST http://localhost:3000/users HTTP/1.1
 content-type: application/json
 
 {
-    "email": "test@example.com",
-    "username": "test@test.com",
-    "name": "Hello",
-    "ipaddress": "94.121.163.63"
+      "firstName": "Draco",
+      "lastName": "Borjal",
+      "email": "terencetest@gmail.com",
+      "favoriteColor": "Green",
+      "birthday": "05/01/1998"
 } 
 
-### PUT Contact
-POST http://localhost:3000/users/666e39d09ddd74b56a62b4bb HTTP/1.1
+### PUT Contact 
+PUT http://localhost:3000/users/667796ce4e05796ab9f83d30 HTTP/1.1
 content-type: application/json
 
 {
-    "email": "test@example.com",
-    "username": "test@test.com",
-    "name": "Hello",
-    "ipaddress": "94.121.163.63"
+     "firstName": "Draco",
+      "lastName": "Simbit",
+      "email": "testing@net.com",
+      "favoriteColor": "Orange",
+      "birthday": "05/04/1999"
 } 
+
+### Delete Contact
+
+DELETE http://localhost:3000/users/6677933cc8e4987f0e3ad64f HTTP/1.1
 
 
 
